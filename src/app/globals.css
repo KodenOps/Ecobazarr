@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Neucha&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:wght@100;300;400;700;800&display=swap");
+
+:root {
+	--Soft-Primary: #84d187;
+	--Primary: #00b207;
+	--hard-Primary: #2c742f;
+	--warning: #ff8a00;
+	--danger: #ea4b48;
+	--lighttext: #666;
+	--bgPanel: #333;
+	--linkGrey: #b2b2b2;
+	--shopgrey: #4d4d4d;
+	--bordercolor: #e6e6e6;
+	--iconBg: #f2f2f2;
+	--yellow: #fcc900;
+	--priceGrey: #999;
+}
+body {
+	user-select: none;
+	font-family: "Poppins";
+}
+.firstlayer {
+	user-select: none;
+}
+.thirdlayer ul li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	color: var(--linkGrey);
+}
+.thirdlayer ul li:hover {
+	color: var(--Soft_Primary);
+}
+.thirdlayer ul li#active {
+	color: white;
+}
+.logo {
+	user-select: none;
+}
+@media screen and (max-width: 520px) {
+	.langCurr {
+		display: none;
+	}
+	.firstlayer {
+		justify-content: center;
+		font-size: 10px;
+	}
+	.firstlayer p {
+		text-align: center;
+	}
+	.cart {
+		display: none;
+	}
+	.icon {
+		scale: calc(0.8);
+	}
+	.heartbagright {
+		gap: 5px;
+	}
+	.herotext {
+		font-size: 24px;
+	}
+	.heropee {
+		font-size: 12px;
+	}
+	.heropeeq {
+		font-size: 8px;
+	}
+}
+@media screen and (max-width: 380px) {
+	.herotext {
+		font-size: 18px;
+	}
+	.heropee {
+		font-size: 8px;
+	}
+	.heropeeq {
+		font-size: 6px;
+		margin-top: -15px;
+	}
+}
+
+.true,
+.show {
+	display: block;
+}
+.false,
+.hide {
+	display: none;
+}
+@layer components {
+	.cardTime {
+		@apply flex gap-1 flex-col text-center font-medium lg:text-[24px] md:text-[20px] text-[18px];
+	}
+	.cardTime span {
+		@apply font-normal text-[10px];
+	}
+	.HotDealcontainer {
+		@apply grid  lg:grid-cols-7 md:grid-cols-5 sm:grid-cols-1  justify-center border-[2px] border-slate-100;
+	}
+	.rating {
+		@apply flex flex-wrap items-center justify-center gap-3 text-[12px] text-[var(--priceGrey)] md:mt-[8px];
+	}
+	.iconsBtn {
+		@apply p-[10px] bg-white rounded-full border-[2px] border-[var(--iconBg)] shadow-sm flex items-center justify-center;
+	}
+	.btnCart {
+		@apply px-[24px] py-[10px] bg-[var(--Primary)] text-white flex-1 rounded-full mx-[10px] text-[18px];
+	}
+	.Timecontainer {
+		@apply flex items-start justify-center md:text-[20px] text-[16px] font-medium gap-4 text-center;
+	}
+	.timepara {
+		@apply text-[12px] text-[var(--priceGrey)]
+
+	}
+}

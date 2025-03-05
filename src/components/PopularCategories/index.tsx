@@ -14,7 +14,7 @@ const Popular = () => {
 					return (
 						<div
 							key={item.id}
-							className='border-[1px] py-4 px-6 border-[var(--bordercolor)] rounded-lg hover:border-[var(--hard-Primary)] cursor-pointer transition-all ease-linear hover:shadow-lg'>
+							className='border-[1px] py-4 px-4 border-[var(--bordercolor)] rounded-lg hover:border-[var(--hard-Primary)] cursor-pointer transition-all ease-linear hover:shadow-lg'>
 							<Image
 								src={item.imgSrc}
 								alt={item.title}

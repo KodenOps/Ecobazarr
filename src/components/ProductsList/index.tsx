@@ -1,51 +1,54 @@
-"use client";
-import React, { useState } from "react";
-import PRODUCTS_LIST from "../../Data/PopularProducts";
-import Image from "next/image";
-import Rating from "@/Assets/Rating.png";
-import { PiHandbagLight } from "react-icons/pi";
-import HiddenBtn from "../HiddenBtn";
+'use client';
+import React, { useState } from 'react';
+import PRODUCTS_LIST from '../../Data/PopularProducts';
+import Image from 'next/image';
+import Rating from '../../Assets/Rating.png';
+import { PiHandbagLight } from 'react-icons/pi';
+import HiddenBtn from '../HiddenBtn';
+
 const ProductList = () => {
-	const [handleviewState, sethandleviewState] = useState(false);
-	return PRODUCTS_LIST.map((ITEM): JSX.Element => {
+	const [activeCard, setActiveCard] = useState<number | null>(null);
+
+	return PRODUCTS_LIST.map((items) => {
+		let links = items.img;
+		const isActive = activeCard === items.id;
+
 		return (
 			<div
-				className="group px-[16px] py-[24px] border-[1px] border-collapse relative hover:border-[var(--Soft-Primary)] ease transition-all hover:shadow-md "
-				key={ITEM.id}>
+				className='px-[16px] py-[24px] border-[1px] border-collapse relative hover:border-[var(--Soft-Primary)] ease transition-all hover:shadow-md'
+				key={items.id}>
 				<Image
-					src={ITEM.img}
-					alt={ITEM.name}
+					src={links}
+					alt={items.name}
 					width={180}
-					className="flex justify-center w-full"
+					className='flex justify-center w-full'
 				/>
-				{/* handles the toggling of the hidden buttons on each cards */}
-				{ITEM.viewClicked ? <HiddenBtn /> : ""}
-				{/* ends here */}
-				<div className="deets flex items-center justify-between">
-					<div className="left">
-						<h2 className="group-hover:text-[var(--Primary)] name text-[14px] text-[var(--shopgrey)]">
-							{ITEM.name}
+
+				{/* Show HiddenBtn only for the active card */}
+				{isActive && <HiddenBtn />}
+
+				<div className='deets flex items-center justify-between'>
+					<div className='left'>
+						<h2 className='group-hover:text-[var(--Primary)] name text-[14px] text-[var(--shopgrey)]'>
+							{items.name}
 						</h2>
-						<p className="price">
-							${ITEM.new_price}{" "}
-							<s className="text-[var(--priceGrey)] ">{ITEM.old_price}</s>
+						<p className='price'>
+							${items.new_price}{' '}
+							<s className='text-[var(--priceGrey)]'>{items.old_price}</s>
 						</p>
 						<Image
 							src={Rating}
-							alt="ratingss"
+							alt='ratings'
 						/>
 					</div>
 
-					<div className="right">
+					<div className='right'>
 						<p
-							className="bg-[var(--iconBg)] active:bg-[var(--Primary)] hover:bg-[var(--Primary)] hover:text-white rounded-full p-[10px] border-2"
-							onClick={(e) => {
-								ITEM.viewClicked = !ITEM.viewClicked;
-								sethandleviewState(!handleviewState);
-							}}>
+							className='bg-[var(--iconBg)] active:bg-[var(--Primary)] hover:bg-[var(--Primary)] hover:text-white rounded-full p-[10px] border-2'
+							onClick={() => setActiveCard(isActive ? null : items.id)}>
 							<PiHandbagLight
 								size={18}
-								className="icon "
+								className='icon'
 							/>
 						</p>
 					</div>
